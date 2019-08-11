@@ -3,6 +3,7 @@
 namespace Dreamonkey\CloudFrontUrlSigner;
 
 use Dreamonkey\CloudFrontUrlSigner\Exceptions\InvalidKeyPairId;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 class CloudFrontUrlSignerServiceProvider extends ServiceProvider
@@ -12,7 +13,9 @@ class CloudFrontUrlSignerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([__DIR__ . '/../config/cloudfront-url-signer.php' => config_path('cloudfront-url-signer.php')], 'config');
+        if (app() instanceof Application) {
+            $this->publishes([__DIR__ . '/../config/cloudfront-url-signer.php' => config_path('cloudfront-url-signer.php')], 'config');
+        }
     }
 
     /**

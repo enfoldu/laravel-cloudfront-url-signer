@@ -30,6 +30,29 @@ composer require dreamonkey/laravel-cloudfront-url-signer
 
 ## Configuration
 
+### Lumen
+
+Manually add the configuration file `cloudfront-url-signer.php` in `vendor/dreamonkey/laravel-cloudfront-url-signer/config` to the root of your web directory in `config`.
+
+Add the service provider to app.php
+
+```
+/*
+|--------------------------------------------------------------------------
+| Register Service Providers
+|--------------------------------------------------------------------------
+|
+| Here we will register all of the application's service providers which
+| are used to bind services into the container. Service providers are
+| totally optional, so you are not required to uncomment this line.
+|
+*/
+
+ $app->register(Dreamonkey\CloudFrontUrlSigner\CloudFrontUrlSignerServiceProvider::class);
+```
+
+### Laravel
+
 The configuration file can optionally be published via:
 
 ```
